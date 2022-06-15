@@ -13,16 +13,16 @@ $bulan = ["Januari", "Februari", "Maret"];
 $arr = [123, "tulisan", false];
 
 // Menampilkan Array
-// var_dump() /print_f()
-// var_dump($hari);
-// echo "<br>";
-// print_r($bulan);
-// echo "<br>";
+// var_dump() / print_f()
+var_dump($hari);
+echo "<br>";
+print_r($bulan);
+echo "<br>";
 
 // Menampilkan 1 elemen pada array
-// echo $arr[0];
-// echo "<br>";
-// echo $bulan[1];
+echo $arr[0];
+echo "<br>";
+echo $bulan[1];
 
 // Menambahkan elemen baru pada array
 var_dump($hari);
