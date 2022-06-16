@@ -22,12 +22,13 @@
                 <td>Jurusan</td>
             </thead>
             
+            <?php $i = 1 ?>
             <?php foreach( $mahasiswa as $row ) : ?>
             <tbody>
-                <td></td>
+                <td><?= $i ?></td>
                 <td>
                     <a href="">Ubah</a> |
-                    <a href="">Hapus</a>
+                    <a href="hapus.php?id=<?= $row["id"] ?>" onclick="return confirm('yakin?');">Hapus</a>
                 </td>
                 <td><img src="img/<?= $row["gambar"] ?>" width="50"></td>
                 <td><?php echo $row["nrp"] ?></td>
@@ -35,6 +36,7 @@
                 <td><?= $row["email"] ?></td>
                 <td><?= $row["jurusan"] ?></td>
             </tbody>
+            <?php $i++ ?>
             <?php endforeach; ?>
         </table>
     </body>
