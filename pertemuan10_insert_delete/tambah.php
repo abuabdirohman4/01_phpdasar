@@ -1,32 +1,28 @@
 <?php
-// koneksi ke DMBS
-$conn = mysqli_connect("localhost", "root", "root", "fnd_01_php_dasar");
-
+include 'functions.php';
 // cek apakah tombol submit dari tiap elemen dalam form
 if (isset($_POST['submit']) ) {
-    // var_dump($_POST);
 	// ambil data dari tiap elemen dalam form
-    $nama = $_POST["nama"];
-	$nrp = $_POST["nrp"];
-	$email = $_POST["email"];
-	$jurusan = $_POST["jurusan"];
-	$gambar = $_POST["gambar"];
+    // $nama = $_POST["nama"];
+	// $nrp = $_POST["nrp"];
+	// $email = $_POST["email"];
+	// $jurusan = $_POST["jurusan"];
+	// $gambar = $_POST["gambar"];
 
-    // query insert data
-    $query = "INSERT INTO mahasiswa 
-                VALUES 
-                (NULL, '$nama', '$nrp', '$email', '$jurusan', '$gambar')
+    if (tambah($_POST) > 0 ) {
+        echo "
+                <script>
+                    alert('data berhasil ditambahkan!');
+                    document.location.href = 'index.php';
+                </script>
             ";
-    mysqli_query($conn, $query);
-
-    // cek apakah data berhasil di tambahkan atau tidak
-    // var_dump(mysqli_affected_rows($conn));
-    if ( mysqli_affected_rows($conn) > 0) {
-        echo "Berhasil";
     } else {
-        echo "Gagal";
-        echo "<br>";
-        echo mysqli_error($conn);
+        echo "
+                <script>
+                    alert('data gagal ditambahkan');
+                    document.location.href = 'tambah.php';
+                </script>
+            ";
     }
 }
 ?>
@@ -37,6 +33,7 @@ if (isset($_POST['submit']) ) {
 </head>
 <body>
     <h1>Tambah Data Mahasiswa</h1>
+    <a href="index.php">Kembali</a>
     <form action="" method="post">
         <ul>
             <li>
