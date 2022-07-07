@@ -106,7 +106,15 @@ function ubah($data) {
 	$nrp = htmlspecialchars($data["nrp"]);
 	$email = htmlspecialchars($data["email"]);
 	$jurusan = htmlspecialchars($data["jurusan"]);
+    $gambaLama = htmlspecialchars($data["gambarLama"]);
+
+    // Cek apakah user pilih gambar baru atau tidak
 	$gambar = htmlspecialchars($data["gambar"]);
+    if ( $_FILES['gambar']['error'] === 4 ) {
+        $gambar = $gambaLama;
+    } else {
+        $gambar = upload();
+    }
 
     $query = "UPDATE mahasiswa SET
                 nrp = '$nrp',

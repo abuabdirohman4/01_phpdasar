@@ -5,11 +5,7 @@ include 'functions.php';
 $id = $_GET['id'];
 
 // Query data mahasiswa berdasarkan id
-// $mhs = query("SELECT * FROM mahasiswa WHERE id = $id");
 $mhs = query("SELECT * FROM mahasiswa WHERE id = $id")[0];
-// var_dump($mhs);
-// var_dump($mhs[0]);
-// var_dump($mhs[0]['nama']);
 
 // Cek apakah tombol submit dari tiap elemen dalam form
 if (isset($_POST['submit']) ) {
@@ -39,8 +35,9 @@ if (isset($_POST['submit']) ) {
 <body>
     <h1>Ubah Data Mahasiswa</h1>
     <a href="index.php">Kembali</a>
-    <form action="" method="post">
-        <input type="text" name="id" value="<?= $mhs['id'] ?>">
+    <form action="" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?= $mhs['id'] ?>">
+        <input type="hidden" name="gambarLama" value="<?= $mhs['gambar'] ?>">
         <ul>
             <li>
                 <label for="nrp">NRP : </label>
@@ -59,8 +56,9 @@ if (isset($_POST['submit']) ) {
                 <input type="text" name="jurusan" value="<?= $mhs['jurusan'] ?>" id="jurusan">
             </li>
             <li>
-                <label for="gambar">Gambar : </label>
-                <input type="text" name="gambar" value="<?= $mhs['gambar'] ?>" id="gambar">
+                <label for="gambar">Gambar : </label> <br>
+                <img src="img/<?= $mhs['gambar']; ?>" width="50" alt="<?= $mhs['gambar']; ?>"> <br>
+                <input type="file" name="gambar">
             </li>
             <li>
                 <button type="submit" name="submit">Ubah Data</button>
