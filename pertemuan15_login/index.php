@@ -13,9 +13,23 @@
 <html>
     <head>
         <title>Halaman Admin</title>
+        <style>
+            ul {
+                float: right;
+            }
+            ul li {
+                display: inline;
+                margin-right: 1rem;
+            }
+        </style>
     </head>
     <body>
+        <ul>
+            <li><a href="login.php">Login</a></li>
+            <li><a href="registrasi.php">Registrasi</a></li>
+        </ul>
         <h1>Daftar Mahasiswa</h1>
+
         <a href="tambah.php">Tambah Data Mahasiswa</a>
         <br><br>
 
