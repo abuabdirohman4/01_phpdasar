@@ -1,14 +1,32 @@
 <?php
     session_start();
+    require 'functions.php';
+
+    // Set Cookie
+    // if ( isset($_COOKIE["login"]) ) {
+    //     if ($_COOKIE["login"] == true ) {
+    //         $_SESSION['login'] = true;
+    //     }
+    // }
+    if ( isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
+        $id = $_COOKIE['id'];
+        $key = $_COOKIE['key'];
+
+        // Ambil username berdasarkan id
+        $result = mysqli_query($conn, "SELECT username FROM user WHERE id = $id");
+        $row = mysqli_fetch_assoc($result);
+
+        // Cek cookie dan username
+        if ( $key === hash('sha256', $row['username'])) {
+            $_SESSION['login'] = true;
+        }
+    }
     
     if (isset($_SESSION["login"])) {
         header("Location: index.php");
         exit;
     }
 
-    require 'functions.php';
-    // echo "hello ini session login", $_SESSION["login"];
-    // $_SESSION["login"] = true;
     if (isset($_POST["login"])) {
 
         $username = $_POST["username"];
@@ -16,14 +34,22 @@
 
         $result = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
 
-        // cek username
+        // Cek Username
         if (mysqli_num_rows($result) === 1) {
-            // cek password
+            // Cek Password
             $row = mysqli_fetch_assoc($result);
             if (password_verify($password, $row["password"])) {
                 // Set Session
                 $_SESSION["login"] = true;
                 
+                // Cek Remeber me
+                if (isset($_POST['remember'])) {
+                    // Buat Cookie
+                    // setcookie('login', 'true', time()+60);
+                    setcookie('id', $row['id'], time()+60);
+                    setcookie('key', hash('sha256', $row['username']), time()+60);
+                }
+
                 header("Location: index.php");
                 exit;
             }
@@ -31,7 +57,6 @@
 
         $error = true;
     }
-    // echo "hello ini session login", $_SESSION["login"];
 ?>
 
 <!DOCTYPE html>
@@ -58,6 +83,10 @@
             <li>
                 <label for="password">Password : </label>
                 <input type="password" name="password" id="password">
+            </li>
+            <li>
+                <input type="checkbox" name="remember" id="remember">
+                <label for="remember">Remember Me</label>
             </li>
             <li>
                 <button type="submit" name="login">Login</button>
