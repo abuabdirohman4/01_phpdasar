@@ -9,3 +9,7 @@
 # Cara Pakai
 - $_COOKIE
 - setcookie()
+
+# Kondisi 
+- Akan hilang dalam 1 sesi (saat browser di close)
+- Bisa di set waktunya dengan tambah 1 parameter ketiga (time()+60) -> Hanya bertahan 1 menit
