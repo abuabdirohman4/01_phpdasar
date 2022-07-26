@@ -1,31 +1,37 @@
 <?php
-include 'functions.php';
-
-// Ambil data di URL
-$id = $_GET['id'];
-
-// Query data mahasiswa berdasarkan id
-$mhs = query("SELECT * FROM mahasiswa WHERE id = $id")[0];
-
-// Cek apakah tombol submit dari tiap elemen dalam form
-if (isset($_POST['submit']) ) {
-    // Cek apakah berhasil diubah atau tidak
-    if (ubah($_POST) > 0 ) {
-        echo "
-                <script>
-                    alert('data berhasil diubah!');
-                    document.location.href = 'index.php';
-                </script>
-            ";
-    } else {
-        echo "
-                <script>
-                    alert('data gagal diubah');
-                    document.location.href = 'ubah.php';
-                </script>
-            ";
+    session_start();
+    if (!isset($_SESSION["login"])) {
+        header("Location: login.php");
+        exit;
     }
-}
+
+    include 'functions.php';
+
+    // Ambil data di URL
+    $id = $_GET['id'];
+
+    // Query data mahasiswa berdasarkan id
+    $mhs = query("SELECT * FROM mahasiswa WHERE id = $id")[0];
+
+    // Cek apakah tombol submit dari tiap elemen dalam form
+    if (isset($_POST['submit']) ) {
+        // Cek apakah berhasil diubah atau tidak
+        if (ubah($_POST) > 0 ) {
+            echo "
+                    <script>
+                        alert('data berhasil diubah!');
+                        document.location.href = 'index.php';
+                    </script>
+                ";
+        } else {
+            echo "
+                    <script>
+                        alert('data gagal diubah');
+                        document.location.href = 'ubah.php';
+                    </script>
+                ";
+        }
+    }
 ?>
 
 <!DOCTYPE html>

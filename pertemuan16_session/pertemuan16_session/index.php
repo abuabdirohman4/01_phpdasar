@@ -1,5 +1,13 @@
 <?php 
+    session_start();
+    
+    if (!isset($_SESSION["login"])) {
+        header("Location: login.php");
+        exit;
+    }
+
     include 'functions.php';
+
     // $mahasiswa = query("SELECT * FROM mahasiswa");
     $mahasiswa = query("SELECT * FROM mahasiswa ORDER BY id DESC");
     // $mahasiswa = query("SELECT * FROM mahasiswa WHERE nrp = 123");
@@ -25,8 +33,7 @@
     </head>
     <body>
         <ul>
-            <li><a href="login.php">Login</a></li>
-            <li><a href="registrasi.php">Registrasi</a></li>
+            <li><a href="logout.php">Logout</a></li>
         </ul>
         <h1>Daftar Mahasiswa</h1>
 
