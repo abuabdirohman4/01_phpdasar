@@ -46,6 +46,7 @@
     </head>
     <body>
         <ul>
+            <li><a href="cetak.php" class="print-hidden" target="_blank">Cetak</a></li>
             <li><a href="logout.php" class="print-hidden">Logout</a></li>
         </ul>
         <h1>Daftar Mahasiswa</h1>
