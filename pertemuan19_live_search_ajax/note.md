@@ -1,0 +1,2 @@
+# Pagination
+- Menggunakan query LIMIT
