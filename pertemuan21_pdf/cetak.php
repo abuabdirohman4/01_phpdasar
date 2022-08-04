@@ -20,16 +20,26 @@ $html = '
             </tr>';
     $i = 1;
     foreach ( $mahasiswa as $row ) {
-        $html .= '
+        // $html .= '
+        //     <tr>
+        //         <td>'.$i.'</td>
+        //         <td><img src="img/'.$row["gambar"].'" width="50"></td>
+        //         <td>'.$row["nrp"].'</td>
+        //         <td>'.$row["nama"].'</td>
+        //         <td>'.$row["email"].'</td>
+        //         <td>'.$row["jurusan"].'</td>
+        //     </tr>
+        // ';
+        $html .= "
             <tr>
-                <td>'.$i++.'</td>
-                <td><img src="img/'.$row["gambar"].'" width="50"></td>
-                <td>'.$row["nrp"].'</td>
-                <td>'.$row["nama"].'</td>
-                <td>'.$row["email"].'</td>
-                <td>'.$row["jurusan"].'</td>
+                <td>$i</td>
+                <td><img src='img/{$row['gambar']}' width='50'></td>
+                <td>{$row['nrp']}</td>
+                <td>{$row['nama']}</td>
+                <td>{$row['email']}</td>
+                <td>{$row['jurusan']}</td>
             </tr>
-        ';
+        ";
     }
 $html .= '
         </table>
