@@ -1,2 +1,2 @@
-# phpdasar
-Repo untuk pembelajaran php dasar dari WP UNPAS
+# PHP Basic
+Repo for learn PHP Basic
