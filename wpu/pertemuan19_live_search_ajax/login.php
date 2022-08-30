@@ -82,7 +82,7 @@
             </li>
             <li>
                 <label for="password">Password : </label>
-                <input type="password" name="password" id="password" value="admin">
+                <input type="password" name="password" id="password" value="password">
             </li>
             <li>
                 <input type="checkbox" name="remember" id="remember">
