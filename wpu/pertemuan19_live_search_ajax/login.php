@@ -78,11 +78,11 @@
         <ul>
             <li>
                 <label for="username">Username : </label>
-                <input type="text" name="username" id="password">
+                <input type="text" name="username" id="password" value="admin">
             </li>
             <li>
                 <label for="password">Password : </label>
-                <input type="password" name="password" id="password">
+                <input type="password" name="password" id="password" value="admin">
             </li>
             <li>
                 <input type="checkbox" name="remember" id="remember">
